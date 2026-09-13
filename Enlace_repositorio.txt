@@ -1,0 +1,11 @@
+EVIDENCIA GA7-220501096-AA4-EV03
+
+Repositorio del proyecto:
+
+https://github.com/JhonBedoya24/SG-SST
+
+Proyecto:
+Gestión Documental SG-SST
+
+Tecnologías utilizadas:
+Python, Flask, SQLite, HTML y CSS.
