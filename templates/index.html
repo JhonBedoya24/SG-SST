@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestión Documental SG-SST</title>
+
+    <!-- Conexión con la hoja de estilos -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+
+<!-- ENCABEZADO -->
+
+<header>
+
+    <h1>Gestión Documental SG-SST</h1>
+
+    <p>
+        Administración y control de documentos
+        de Seguridad y Salud en el Trabajo
+    </p>
+
+</header>
+
+
+<!-- CONTENIDO PRINCIPAL -->
+
+<main>
+
+    <section>
+
+        <h2>Documentos registrados</h2>
+
+        <p>
+            Desde este módulo puede consultar y administrar
+            los documentos relacionados con el SG-SST.
+        </p>
+
+
+        <!-- Botón para registrar un documento -->
+
+        <a href="/registrar"
+           class="btn-principal">
+
+            + Registrar documento
+
+        </a>
+
+
+        <!-- TABLA DE DOCUMENTOS -->
+
+        <div class="tabla-contenedor">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Documento</th>
+
+                        <th>Tipo</th>
+
+                        <th>Responsable</th>
+
+                        <th>Fecha</th>
+
+                        <th>Versión</th>
+
+                        <th>Acciones</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <!-- Mostrar los documentos registrados -->
+
+                    {% for documento in documentos %}
+
+                    <tr>
+
+                        <td>
+                            {{ documento['nombre'] }}
+                        </td>
+
+                        <td>
+                            {{ documento['tipo'] }}
+                        </td>
+
+                        <td>
+                            {{ documento['responsable'] }}
+                        </td>
+
+                        <td>
+                            {{ documento['fecha'] }}
+                        </td>
+
+                        <td>
+                            {{ documento['version'] }}
+                        </td>
+
+                        <td>
+
+                            <!-- Editar documento -->
+
+                            <a href="/editar/{{ documento['id'] }}">
+
+                                <button type="button"
+                                        class="btn-editar">
+
+                                    Editar
+
+                                </button>
+
+                            </a>
+
+
+                            <!-- Eliminar documento -->
+
+                            <a href="/eliminar/{{ documento['id'] }}"
+                               onclick="return confirm('¿Está seguro de eliminar este documento?');">
+
+                                <button type="button"
+                                        class="btn-eliminar">
+
+                                    Eliminar
+
+                                </button>
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- PIE DE PÁGINA -->
+
+<footer>
+
+    Sistema de Gestión Documental SG-SST
+
+</footer>
+
+
+</body>
+
+</html>
